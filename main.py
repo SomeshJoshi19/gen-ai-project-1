@@ -32,6 +32,14 @@ class SummaryRequest(BaseModel):
 class SummaryResponse(BaseModel):
     summary: str
 
+@app.get("/getinfo")
+def get_info():
+    return {
+        "app": "GenAI Summarizer API",
+        "version": "1.1",
+        "status": "running"
+    }
+
 @app.post("/summarize", response_model=SummaryResponse)
 def summarize(request: SummaryRequest):
     try:
